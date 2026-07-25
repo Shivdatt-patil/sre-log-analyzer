@@ -13,3 +13,8 @@ A simple Python project to analyze application logs.
 - Python
 - Git
 - GitHub
+ ## Version 2 Features
+
+- Error counting
+- Top recurring errors
+- Log pattern detection
