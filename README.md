@@ -18,3 +18,22 @@ A simple Python project to analyze application logs.
 - Error counting
 - Top recurring errors
 - Log pattern detection
+
+- ## Architecture
+
+sample.log
+   ↓
+analyzer.py
+   ↓
+report.html
+   ↓
+dashboard.html
+
+## Features
+
+✅ Log Analysis
+✅ Error Detection
+✅ Dashboard Generation
+✅ HTML Report Generation
+✅ GitHub Actions CI
+✅ GitHub Pages Hosting
