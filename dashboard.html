@@ -2,39 +2,86 @@
 <html>
 <head>
     <title>SRE Dashboard</title>
+
     <style>
         body {
-            font-family: Arial;
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
             margin: 40px;
         }
 
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .card {
-            border: 1px solid #ccc;
+            background-color: #1e1e1e;
+            border-radius: 12px;
             padding: 20px;
-            margin: 10px;
-            border-radius: 8px;
-            width: 200px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+
+        .errors {
+            border-left: 5px solid red;
+        }
+
+        .warnings {
+            border-left: 5px solid orange;
+        }
+
+        .info {
+            border-left: 5px solid green;
+        }
+
+        .total {
+            border-left: 5px solid dodgerblue;
+        }
+
+        p {
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
+
 </head>
+
 <body>
 
-<h1>SRE Monitoring Dashboard</h1>
+    <h1>SRE Monitoring Dashboard</h1>
 
-<div class="card">
-    <h3>Total Logs</h3>
-    <p>150</p>
-</div>
+    <div class="container">
 
-<div class="card">
-    <h3>Errors</h3>
-    <p>10</p>
-</div>
+        <div class="card total">
+            <h3>Total Logs</h3>
+            <p>150</p>
+        </div>
 
-<div class="card">
-    <h3>Warnings</h3>
-    <p>20</p>
-</div>
+        <div class="card errors">
+            <h3>Errors</h3>
+            <p>10</p>
+        </div>
+
+        <div class="card warnings">
+            <h3>Warnings</h3>
+            <p>20</p>
+        </div>
+
+        <div class="card info">
+            <h3>Info Logs</h3>
+            <p>120</p>
+        </div>
+
+    </div>
 
 </body>
 </html>
