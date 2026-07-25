@@ -1,1 +1,15 @@
-# sre-log-analyzer
+# SRE Log Analyzer
+
+A simple Python project to analyze application logs.
+
+## Features
+
+- Count INFO logs
+- Count WARN logs
+- Count ERROR logs
+
+## Tech Stack
+
+- Python
+- Git
+- GitHub
