@@ -1,8 +1,9 @@
 INFO Application Started
-INFO Database Connected
+ERROR Database Connection Failed
 WARN Memory Usage High
-ERROR Connection Timeout
+ERROR Database Connection Failed
+ERROR API Timeout
 INFO User Login
-ERROR API Failed
+ERROR API Timeout
 WARN Disk Usage 80%
-ERROR Database Error
+ERROR Database Connection Failed
