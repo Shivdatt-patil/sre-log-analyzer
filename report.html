@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SRE Log Report</title>
+    <title>SRE Log Analyzer</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .warn {
+            color: orange;
+        }
+
+        .info {
+            color: green;
+        }
+    </style>
 </head>
 <body>
-    <h1>SRE Log Analyzer Report</h1>
-    <p>INFO: 3</p>
-    <p>WARN: 2</p>
-    <p>ERROR: 5</p>
+
+<h1>SRE Log Analyzer Report</h1>
+
+<div class="card">
+    <p class="info">INFO: 3</p>
+    <p class="warn">WARN: 2</p>
+    <p class="error">ERROR: 5</p>
+</div>
+
 </body>
 </html>
