@@ -24,3 +24,7 @@ jobs:
 
       - name: Validate Python Script
         run: python -m py_compile analyzer.py
+
+      - name: Generate HTML Report
+        run: python analyzer.py
+`
