@@ -1,39 +1,3 @@
-with open("sample.log", "r") as file:
-    logs = file.readlines()
-
-info = 0
-warn = 0
-error = 0
-
-for line in logs:
-    if "INFO" in line:
-        info += 1
-    elif "WARN" in line:
-        warn += 1
-    elif "ERROR" in line:
-        error += 1
-
-print("=== Log Summary ===")
-print(f"INFO: {info}")
-print(f"WARN: {warn}")
-print(f"ERROR: {error}")
-from collections import Counter
-
-with open("sample.log", "r") as file:
-    logs = file.readlines()
-
-errors = []
-
-for line in logs:
-    if line.startswith("ERROR"):
-        errors.append(line.strip())
-
-counter = Counter(errors)
-
-print("Top Errors:")
-for error, count in counter.items():
-    print(f"{error} -> {count}")
-
 from collections import Counter
 
 with open("sample.log", "r") as file:
@@ -42,47 +6,172 @@ with open("sample.log", "r") as file:
 info = 0
 warn = 0
 error = 0
-
 errors = []
 
 for line in logs:
-    if "INFO" in line:
+    line = line.strip()
+
+    if line.startswith("INFO"):
         info += 1
-    elif "WARN" in line:
+
+    elif line.startswith("WARN"):
         warn += 1
-    elif "ERROR" in line:
+
+    elif line.startswith("ERROR"):
         error += 1
-        errors.append(line.strip())
+        errors.append(line)
+
+total_logs = len(logs)
 
 top_errors = Counter(errors)
 
-html = f"""
+# Generate Report
+
+report_html = f"""
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SRE Log Report</title>
+<title>SRE Log Report</title>
+<style>
+body {{
+    font-family: Arial;
+    margin: 40px;
+}}
+
+.error {{
+    color: red;
+}}
+
+.warn {{
+    color: orange;
+}}
+
+.info {{
+    color: green;
+}}
+</style>
 </head>
 <body>
-    <h1>SRE Log Analyzer Report</h1>
 
-    <h2>Summary</h2>
+<h1>SRE Log Analyzer Report</h1>
 
-    <p>INFO: {info}</p>
-    <p>WARN: {warn}</p>
-    <p>ERROR: {error}</p>
+<h2>Summary</h2>
 
-    <h2>Top Errors</h2>
+<p class="info">INFO: {info}</p>
+<p class="warn">WARN: {warn}</p>
+<p class="error">ERROR: {error}</p>
+
+<h2>Top Errors</h2>
 """
 
 for err, count in top_errors.items():
-    html += f"<p>{err} : {count}</p>"
+    report_html += f"<p>{err} : {count}</p>"
 
-html += """
+report_html += """
 </body>
 </html>
 """
 
 with open("report.html", "w") as report:
-    report.write(html)
+    report.write(report_html)
 
-print("report.html generated successfully")
+# Generate Dashboard
+
+dashboard_html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+<title>SRE Dashboard</title>
+
+<style>
+
+body {{
+    background-color: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}}
+
+h1 {{
+    text-align: center;
+}}
+
+.container {{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}}
+
+.card {{
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    padding: 20px;
+    width: 220px;
+    text-align: center;
+}}
+
+.total {{
+    border-left: 5px solid dodgerblue;
+}}
+
+.errors {{
+    border-left: 5px solid red;
+}}
+
+.warnings {{
+    border-left: 5px solid orange;
+}}
+
+.info {{
+    border-left: 5px solid green;
+}}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>SRE Monitoring Dashboard</h1>
+
+<div class="container">
+
+<div class="card total">
+<h3>Total Logs</h3>
+<p>{total_logs}</p>
+</div>
+
+<div class="card errors">
+<h3>Errors</h3>
+<p>{error}</p>
+</div>
+
+<div class="card warnings">
+<h3>Warnings</h3>
+<p>{warn}</p>
+</div>
+
+<div class="card info">
+<h3>Info Logs</h3>
+<p>{info}</p>
+</div>
+
+</div>
+
+<h2>Top Errors</h2>
+"""
+
+for err, count in top_errors.items():
+    dashboard_html += f"<p>{err} : {count}</p>"
+
+dashboard_html += """
+</body>
+</html>
+"""
+
+with open("dashboard.html", "w") as dashboard:
+    dashboard.write(dashboard_html)
+
+print("Dashboard Generated Successfully")
+print("Report Generated Successfully")
