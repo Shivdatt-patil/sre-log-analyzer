@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate HTML Report
         run: python analyzer.py
-`
+
       - name: Verify Generated Files
         run: |
           test -f report.html
